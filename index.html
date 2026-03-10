@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Валерия & Стас</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Montserrat;
+background:#faf7f5;
+color:#333;
+text-align:center;
+}
+
+.container{
+padding:60px 20px;
+max-width:700px;
+margin:auto;
+}
+
+h1{
+font-family:'Playfair Display';
+font-size:42px;
+line-height:1.2;
+}
+
+h2{
+font-family:'Playfair Display';
+font-weight:400;
+margin-bottom:20px;
+}
+
+.date{
+font-size:20px;
+margin-top:10px;
+}
+
+.timer{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:30px;
+}
+
+.block{
+background:white;
+padding:15px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.number{
+font-size:24px;
+font-weight:600;
+}
+
+.photo{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+margin-top:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.colors{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-top:20px;
+}
+
+.color{
+width:35px;
+height:35px;
+border-radius:50%;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+.map{
+margin-top:20px;
+border-radius:10px;
+overflow:hidden;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid #ddd;
+font-family:Montserrat;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#8c7b74;
+color:white;
+font-size:16px;
+}
+
+.poll{
+text-align:left;
+margin-top:10px;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+@media(min-width:768px){
+
+h1{
+font-size:60px;
+}
+
+.timer{
+grid-template-columns:repeat(4,120px);
+justify-content:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="petals"></canvas>
+
+<div class="container">
+
+<h1>Валерия<br>&<br>Стас</h1>
+
+<p>Приглашаем на нашу свадьбу</p>
+
+<div class="date">5 сентября 2026</div>
+
+<div class="timer">
+
+<div class="block">
+<div id="d" class="number"></div>
+дней
+</div>
+
+<div class="block">
+<div id="h" class="number"></div>
+часов
+</div>
+
+<div class="block">
+<div id="m" class="number"></div>
+мин
+</div>
+
+<div class="block">
+<div id="s" class="number"></div>
+сек
+</div>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<h2>Дорогой гость</h2>
+
+<p>Мы будем счастливы разделить с вами самый важный день нашей жизни.</p>
+
+<img class="photo" src="photo.jpg">
+
+</div>
+
+<div class="container">
+
+<h2>Дресс-код</h2>
+
+<div class="colors">
+
+<div class="color" style="background:#d7d0c7"></div>
+<div class="color" style="background:#efe5c8"></div>
+<div class="color" style="background:#bcd4d6"></div>
+<div class="color" style="background:#6b3c2f"></div>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<h2>Фотогалерея</h2>
+
+<div class="gallery">
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+
+</div>
+
+</div>
+
+<div class="container">
+
+<h2>Место проведения</h2>
+
+<div class="map">
+
+<iframe
+src="https://maps.google.com/maps?q=Ляховичи&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="250"
+frameborder="0">
+</iframe>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<h2>Подтвердите присутствие</h2>
+
+<form id="form">
+
+<input name="name" placeholder="Ваше имя" required>
+
+<textarea name="message" placeholder="Сообщение"></textarea>
+
+<label>
+<input type="checkbox" name="moneyGift">
+Денежный подарок
+</label>
+
+<div class="poll">
+
+<p>Какой алкоголь предпочитаете?</p>
+
+<label><input type="radio" name="drink" value="Красное вино"> Красное вино</label><br>
+<label><input type="radio" name="drink" value="Белое вино"> Белое вино</label><br>
+<label><input type="radio" name="drink" value="Шампанское"> Шампанское</label><br>
+<label><input type="radio" name="drink" value="Виски"> Виски</label><br>
+<label><input type="radio" name="drink" value="Водка"> Водка</label>
+
+</div>
+
+<button>Отправить</button>
+
+</form>
+
+</div>
+
+<script>
+
+const wedding=new Date("2026-09-05T14:00:00")
+
+setInterval(()=>{
+
+let now=new Date()
+let diff=wedding-now
+
+d.innerText=Math.floor(diff/86400000)
+h.innerText=Math.floor(diff/3600000)%24
+m.innerText=Math.floor(diff/60000)%60
+s.innerText=Math.floor(diff/1000)%60
+
+},1000)
+
+const scriptURL="PASTE_SCRIPT_URL"
+
+document.getElementById("form").addEventListener("submit",e=>{
+
+e.preventDefault()
+
+let f=new FormData(e.target)
+
+let data={
+name:f.get("name"),
+message:f.get("message"),
+moneyGift:f.get("moneyGift")?"Да":"Нет",
+drink:f.get("drink")
+}
+
+fetch(scriptURL,{
+method:"POST",
+body:JSON.stringify(data)
+})
+
+alert("Спасибо! Ответ отправлен ❤️")
+
+e.target.reset()
+
+})
+
+const canvas=document.getElementById("petals")
+const ctx=canvas.getContext("2d")
+
+canvas.width=innerWidth
+canvas.height=innerHeight
+
+let petals=[]
+
+for(let i=0;i<25;i++){
+petals.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*4+2,
+d:Math.random()*2
+})
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="rgba(255,182,193,0.7)"
+
+petals.forEach(p=>{
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
+ctx.fill()
+
+p.y+=p.d
+if(p.y>canvas.height)p.y=0
+})
+
+requestAnimationFrame(draw)
+
+}
+
+draw()
+
+</script>
+
+</body>
+</html>
